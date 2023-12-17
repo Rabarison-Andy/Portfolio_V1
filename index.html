@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/projectsImg/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio V1.0 - Andy Rabarison</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="projects.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="https://unpkg.com/ionicons@latest/dist/ionicons/ionicons.js"></script>
+
+<body>
+    <div id="version_info">Portfolio V1.0</div>
+
+
+    <!-- Message de présentation, à l'arrivé sur le site -->
+    <div id="welcome_landing">
+        <h1><b>Andy Rabarison</b></h1>
+        <h2>Student in BUT MMI, France IUT Gustave Eiffel. Web Developer mostly Back-End, Animator, Motion Designer,
+            Video Editor</h2>
+    </div>
+
+    <!-- Slider automatique -->
+    <div class="marquee-horizontal2">
+        <div class="track-horizontal2">
+            <div class="marquee-text">Ambitieux</div>
+            <div class="marquee-text">Persévérant</div>
+            <div class="marquee-text">Polyvalent</div>
+            <div class="marquee-text">Curieux</div>
+            <div class="marquee-text">Adaptatif</div>
+            <div class="marquee-text">Esprit d’équipe </div>
+        </div>
+    </div>
+
+    <div id="moreAboutme">
+    <h2 id="aboutMe">About me</h2>
+    <div id="aboutMeText">
+    <p>Je suis un jeune Français de 20/21 ans, actuellement en deuxième année de la formation BUT MMI (Métiers
+        du Multimédia et de l'Internet). En tant qu'autodidacte passionné, j'ai développé mes compétences dans divers
+        domaines, toujours avide d'apprendre et de relever de nouveaux défis.</p>
+
+    <p>Ma passion réside particulièrement dans le monde de l'animation, et j'apprécie explorer plusieurs domaines
+        pour enrichir mes connaissances. J'ai une affection particulière pour le travail collaboratif et
+        l'organisation, considérant que la synergie d'une équipe est essentielle pour atteindre des résultats
+        exceptionnels.</p>
+
+    <p>Mon approche du développement est empreinte d'une certaine originalité, cherchant à transcender la norme.
+        J'apprécie la compétition saine et je m'efforce de porter le design et les fonctionnalités à un niveau
+        supérieur, offrant ainsi une expérience unique aux utilisateurs.</p>
+
+    <p>En constante évolution, ma curiosité s'étend à presque tous les domaines. Cette quête perpétuelle de
+        connaissances me pousse à explorer de nouvelles idées et à rester à la pointe des dernières tendances et
+        technologies.</p>
+    </div>
+    </div>
+
+    <div id="portfolio">
+    <div id="projectFilter">
+        <button>All</button>
+        <button>Développement Web</button>
+        <button>Montage Vidéo</button>
+        <button>Motion Design</button>
+        <button>Sprite Animation</button>
+    </div>
+
+
+    <div id="all-projects"></div>
+    </div>
+
+    <div class="fabs" onclick="toggleBtn()">
+        <div class="action">
+          <i class="fas fa-plus" id="add"></i>
+          <i class="fas fa-times" id="remove" style="display: none"></i>
+        </div>
+    
+        <div class="btns">
+          <a href="CV Andy Rabarison MMI.pdf" class="btn" style="background: #3b5999"><ion-icon name="reader"></ion-icon></a>
+          <a href="https://github.com/Rabarison-Andy" class="btn" style="background: #55acee"><ion-icon name="logo-github"></ion-icon></a>
+          <a href="https://linkedin.com/in/andy%20rabarison" class="btn" style="background: #25D366"><ion-icon name="logo-linkedin"></ion-icon></a>
+        </div>
+      </div>
+
+    <footer>
+        <div class="footer-container">
+            <nav class="footer">
+                <a href="mentions_legales.php">Contact</a>
+                <a href="apropos.php">Mention légales</a>
+                <a href="partenaires.php"></a>
+                <a href="FAQ.php">FAQ</a>
+                <p class="copyright">
+                    © 2023-2024 Portfolio V1.0 | Andy Rabarison
+                </p>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+       $(document).ready(function () {
+    var projectsContainer = document.getElementById("all-projects");
+    var projectFilterButtons = document.querySelectorAll("#projectFilter button");
+
+    projectFilterButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            // Récupérer le type de projet associé au bouton cliqué
+            var projectType = button.textContent;
+
+            // Filtrer les projets en fonction du type sélectionné
+            var filteredProjects = projectType === 'All' ? projects : projects.filter(function (project) {
+                return project.typeProjet === projectType;
+            });
+
+            // Afficher la liste filtrée
+            displayProjects(filteredProjects);
+        });
+    });
+
+    function displayProjects(projectsToDisplay) {
+        projectsContainer.innerHTML = ""; // Efface la liste existante
+
+        if (projectsToDisplay.length === 0) {
+            var noProjectsMessage = document.createElement("p");
+            noProjectsMessage.textContent = "Aucun projet dans ce domaine pour l'instant";
+            projectsContainer.appendChild(noProjectsMessage);
+        } else {
+            projectsToDisplay.forEach(function (project) {
+                var projectDiv = document.createElement("div");
+                projectDiv.classList.add("container");
+
+                var cardArticle = document.createElement("article");
+                cardArticle.classList.add("card");
+
+                var backgroundDiv = document.createElement("div");
+                backgroundDiv.classList.add("background");
+
+                var image = document.createElement("img");
+                image.src = project.img;
+                image.alt = project.nomProjet;
+                backgroundDiv.appendChild(image);
+
+                var contentDiv = document.createElement("div");
+                contentDiv.classList.add("content");
+
+                // Ajout du type et de l'année à la div "content"
+                var cardHeaderDiv = document.createElement("div");
+                cardHeaderDiv.classList.add("card-header");
+
+                var cardTypeDiv = document.createElement("div");
+                cardTypeDiv.classList.add("card-type");
+                cardTypeDiv.textContent = project.typeProjet;
+                cardHeaderDiv.appendChild(cardTypeDiv);
+
+                var latestArticleDiv = document.createElement("div");
+                latestArticleDiv.classList.add("latest-article");
+                latestArticleDiv.textContent = project.anneeProjet;
+                cardHeaderDiv.appendChild(latestArticleDiv);
+
+                contentDiv.appendChild(cardHeaderDiv);
+
+                // Ajout du titre du projet à la div "content"
+                var cardContentDiv = document.createElement("div");
+                cardContentDiv.classList.add("card-content");
+
+                var h2Element = document.createElement("h2");
+                h2Element.textContent = project.nomProjet;
+                cardContentDiv.appendChild(h2Element);
+
+                contentDiv.appendChild(cardContentDiv);
+
+                // Ajout du bouton "Voir le projet" à la div "content"
+                if (project.link) {
+                    var projectButton = document.createElement("a");
+                    projectButton.id = "btn_" + project.id;
+                    projectButton.href = "projects.html" + "?projectId=" + project.id;
+                    projectButton.textContent = "Voir le projet";
+                    contentDiv.appendChild(projectButton);
+                }
+
+                cardArticle.appendChild(backgroundDiv);
+                cardArticle.appendChild(contentDiv);
+                projectDiv.appendChild(cardArticle);
+
+                projectsContainer.appendChild(projectDiv);
+            });
+        }
+    }
+
+    // Affichez tous les projets au chargement initial
+    displayProjects(projects);
+});
+
+
+
+        function toggleBtn() {
+      const Btns = document.querySelector(".btns");
+      const add = document.getElementById("add");
+      const remove = document.getElementById("remove");
+      const btn = document.querySelector(".btns").querySelectorAll("a");
+      Btns.classList.toggle("open");
+      if (Btns.classList.contains("open")) {
+        remove.style.display = "block";
+        add.style.display = "none";
+        btn.forEach((e, i) => {
+          setTimeout(() => {
+            bottom = 40 * i;
+            e.style.bottom = bottom + "px";
+          }, 100 * i);
+        });
+      } else {
+        add.style.display = "block";
+        remove.style.display = "none";
+        btn.forEach((e, i) => {
+          e.style.bottom = "0px";
+        });
+      }
+    }
+    </script>
+</body>
+
+</html>

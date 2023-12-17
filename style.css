@@ -1,0 +1,482 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #3f4249;
+  overflow-x: hidden;
+  background-image: url("background.png");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/*--------- Scroll Bar --------- */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #F5F5F5;
+  border-radius: 10px;
+  cursor: grab;
+  right: 0;
+  top: 0;
+}
+
+
+/*--------- Version du Portfolio --------- */
+#version_info {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 10px;
+}
+
+/*--------- Nom + petite présentation --------- */
+
+#welcome_landing {
+  /*border: 3px solid;*/
+  margin-top: 10%;
+  padding: 5em;
+  position: relative;
+  margin-bottom: 25%;
+}
+
+#welcome_landing h1 {
+  font-size: 9vw;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(60%);
+}
+
+#welcome_landing h2 {
+  /*border: 3px solid;*/
+  font-size: 1.4rem;
+  font-weight: 400;
+  text-align: right;
+  position: absolute;
+  top: 70%;
+  right: 5%;
+  max-width: 25%;
+}
+
+/*--------- Infinite marquee de mes soft skills source:https://dev.to/ymvaghela07/infinite-marquee-using-just-html-and-css-2nb--------- */
+.marquee-horizontal2 {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.track-horizontal2 {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee-horizontal 20s linear infinite;
+}
+
+.marquee-text {
+  -webkit-text-size-adjust: 100%;
+  -webkit-box-direction: normal;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding-right: 0.3em;
+  padding-left: 0.3em;
+  -webkit-box-flex: 0;
+  flex: 0 0 auto;
+  font-size: 6.25em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+@keyframes marquee-horizontal {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+  /*----- A propos de moi -----*/
+  #moreAboutme {
+
+    text-align: center;
+    margin: 5%;
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
+
+#aboutMe {
+    font-weight: bold;
+    font-size: 6rem;
+    margin-bottom: 5%;
+}
+
+#aboutMeText p {
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+#aboutMeText p:nth-child(even) {
+  margin-right: 50%;
+    text-align: left;
+    margin-bottom: 2%;
+}
+
+#aboutMeText p:nth-child(odd) {
+  margin-left: 50%;
+    text-align: right;
+    margin-bottom: 9%;
+}
+
+@media only screen and (max-width: 900px) {
+    #aboutMeText {
+        display: block;
+    }
+
+    #aboutMeText p:nth-child(even),
+    #aboutMeText p:nth-child(odd) {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 5%;
+    }
+}
+
+
+
+
+/*--------- Mes projets --------- */
+
+#portfolio {
+  border: 3px solid;
+  padding: 20px;
+}
+
+#projectFilter {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#projectFilter button {
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  background-color: #f5f5f5;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+#projectFilter button.active {
+  background-color: #ddd;
+}
+
+#all-projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+.container {
+  max-width: none;
+  container-name: card-container;
+  container-type: inline-size;
+}
+
+.card {
+  display: flex;
+  border: 1px solid var(--primary-light);
+  border-radius: 12px;
+  background-color: var(--secondary-background);
+  cursor: pointer;
+  overflow: hidden;
+  min-height: 360px;
+  flex-direction: column;
+}
+
+.card:hover {
+  box-shadow: 0 24px 72px 0 rgba(96, 93, 255, .1);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: start;
+  padding: 16px;
+}
+
+.background {
+  flex: 1;
+}
+
+.background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card-type {
+  height: 36px;
+  padding: 4px 12px;
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  gap: 8px;
+  color: var(--secondary-text);
+  background-color: var(--secondary);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.latest-article {
+  height: 36px;
+  padding: 4px 12px;
+  border-radius: 8px;
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-content>h2 {
+  font-weight: 700;
+}
+
+.card-content>p {
+  font-weight: 400;
+  margin: 6px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.blog-author {
+  display: flex;
+  align-items: center;
+  width: auto;
+  padding: 4px 20px 4px 4px;
+  column-gap: 8px;
+  border: 1px solid #e6e5ff;
+  background-color: #fff;
+  border-radius: 32px;
+  height: 56px;
+}
+
+.blog-author__name {
+  font-weight: 700;
+}
+
+.blog-author__alias {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.blog-author img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.blog-preview__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+}
+
+.blog-preview__bottom {
+  margin-top: auto;
+}
+
+.go-to-article-button {
+  padding: 8px;
+  min-height: 36px;
+  min-width: 56px;
+  width: 100%;
+  max-width: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: var(--primary-light);
+  transition: all 0.2s ease-in-out;
+  border: 1px solid transparent;
+}
+
+.go-to-article-button svg {
+  width: 64px;
+  stroke: var(--secondary-text);
+}
+
+.go-to-article-button:hover {
+  border: 1px solid var(--primary);
+}
+
+
+
+
+
+
+
+
+/*--------- Menu pour links et CV --------- */
+
+.menu-checkbox {
+display: none;
+}
+
+.menu {
+position: sticky;
+}
+
+.menu-dots {
+width: 5rem;
+height: 5rem;
+border-radius: 50%;
+box-shadow: 0 0 0 0.3rem #161e3f;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+transform: rotate(90deg);
+transition: 0.3s;
+cursor: pointer;
+}
+
+.menu-dots:hover {
+box-shadow: 0 0 0 0.3rem #161e3f, 0 0 0 1rem rgba(#161e3f, 0.16);
+transform: scale(1.2) rotate(90deg);
+}
+
+.menu-dot {
+width: 0.45rem;
+height: 0.45rem;
+background-color: #161e3f;
+border-radius: 50%;
+}
+
+.menu-dot + .menu-dot {
+margin-top: 0.3rem;
+}
+
+.menu-items {
+position: absolute;
+top: -2.3rem;
+left: -2.2rem;
+width: 9.4rem;
+height: 11rem;
+color: #fff;
+pointer-events: none;
+display: grid;
+grid-template-columns: 1fr 1fr;
+opacity: 0;
+transition: 0.3s;
+}
+
+.menu-item {
+transform: scale(0.5);
+filter: blur(10px);
+transition: 0.3s;
+}
+
+.fabs {
+position: fixed;
+right: 20px;
+bottom: 20px;
+}
+
+.action {
+background: rgb(255, 0, 128);
+height: 50px;
+width: 50px;
+border-radius: 50%;
+box-shadow: 0 5px 7px 0px gray;
+transition: background-color 0.4s ease-in-out;
+}
+
+.action i {
+position: absolute;
+color: white;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+font-size: 25px;
+cursor: pointer;
+}
+
+.action:hover {
+background-color: rgb(255, 103, 179);
+}
+
+.btn {
+position: absolute;
+height: 35px;
+width: 35px;
+border-radius: 50%;
+transition: bottom 0.3s ease-in-out;
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+justify-content: center; /* Ajout de cette ligne */
+align-items: center; /* Ajout de cette ligne */
+}
+
+.btn i {
+position: absolute;
+font-size: 18px;
+color: white; /* Ajout de cette ligne */
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+}
+
+.btns {
+position: absolute;
+bottom: 0px;
+margin-bottom: 5px;
+height: 35px;
+width: 35px;
+transition: 0.3s ease-in-out;
+left: 50%;
+transform: translateX(-50%);
+z-index: -1;
+}
+
+.btns.open {
+bottom: 50px;
+}
