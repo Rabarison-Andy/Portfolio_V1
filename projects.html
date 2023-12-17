@@ -3,82 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+<title>Portfolio V1.0 - Andy Rabarison</title>
+<link rel="stylesheet" href="style.css">
 </head>
-<style>
-.project-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Deux colonnes */
-    gap: 2em; /* Espace entre les colonnes */
-    align-items: center;
-}
-
-.imgProject {
-    width: 100%;
-    max-width: 100%; /* Taille constante pour l'image */
-}
-
-.imgProject img {
-    width: 100%;
-    border-radius: 1em;
-    height: auto;
-    border: 1px solid currentColor;
-}
-
-.textProject {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5em;
-}
-
-/* Les styles pour les éléments textuels restent inchangés */
-.titreProjet h2,
-.languageProjet h2,
-.descProjet h2,
-.yearProjet h2,
-.linkProjet a {
-    font-size: 1.5rem;
-    font-weight: 500;
-    text-align: center; /* Centrer le texte */
-}
-
-.projetFormation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.projetFormation h2 {
-    max-width: 60%;
-    font-style: italic;
-    text-align: center; /* Centrer le texte */
-}
-
-.linkProjet a {
-    text-align: center; /* Centrer le texte */
-}
-
-#participantsContainer {
-    display: flex;
-    flex-direction: row;
-    gap: 1em;
-}
-
-#participantsContainer p {
-    max-width: 100%;
-    font-style: italic;
-    text-align: center; /* Centrer le texte */
-}
-
-#participantsContainer a {
-    text-align: center; /* Centrer le texte */
-}
-</style>
 <body>
+    <div id="version_info">Portfolio V1.0</div>
 
 <div id="info-project" class="projet-main"></div>
 
-
+<footer>
+    <div class="footer-container">
+        <nav class="footer">
+            <p class="copyright">
+                © 2023-2024 Portfolio V1.0 | Andy Rabarison
+            </p>
+        </nav>
+    </div>
+</footer>
 
 <script src="projects.js"></script>
 <script>
@@ -106,21 +56,17 @@ document.addEventListener("DOMContentLoaded", function () {
         textContainer.innerHTML +=
             "<div class=\"titreProjet\"><h2>" + project.nomProjet + " </h2></div>" +
             "<div class=\"languageProjet\"><h2>" + project.usedLanguages + " </h2></div>" +
-            "<div class=\"projetFormation\">" + project.statusProjet + " </div>" +
+            "<div class=\"projetFormation\"><h2>" + project.statusProjet + " </h2></div>" +
             "<div class=\"descProjet\"><h2>" + project.desc + " </h2></div>" +
-            "<div class=\"yearProjet\"><h2>" + project.anneeProjet + " </h2></div>" +
-            "<div class=\"partnersProjet\"><h2>Participants:<div id=\"participantsContainer\">Test</div> </h2></div>";
+            "<div class=\"yearProjet\"><h2>" + project.anneeProjet + " </h2></div>";
 
         // Ajouter la partie "responvie" avant le lien du projet
         if (project.responvie !== undefined) {
-            textContainer.innerHTML += "<div class=\"responsiveProjet\"><h2>" + project.responvie + " </h2></div>";
+            textContainer.innerHTML += "<div class=\"responsiveProjet\"><h2>Responsive : " + project.responvie + " </h2></div>";
         }
 
         // Ajouter le lien du projet au conteneur de texte
         textContainer.innerHTML += "<div class=\"linkProjet\"><a href=" + project.link + "> Voir le projet </a></div>";
-
-        // Appeler la fonction pour afficher les participants dans le conteneur correspondant
-        displayParticipants(project);
 
         // Créer un élément div pour l'image du projet
         var imageContainer = document.createElement("div");
@@ -143,61 +89,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Le projet n'a pas été trouvé.");
     }
 });
-
-function displayParticipants(project) {
-    var participantsContainer = document.getElementById("participantsContainer");
-
-    // Vérifier si le projet est défini
-    if (!project) {
-        console.log("Le projet est indéfini.");
-        return;
-    }
-
-    // Créer un tableau pour stocker tous les noms des participants uniques
-    var uniqueParticipants = [];
-
-    // Parcourir les noms des participants de chaque projet
-    for (var i = 1; i <= 10; i++) {
-        var participantKey = "nomParticipant" + i;
-
-        // Vérifier si le projet a la propriété nomParticipant1, nomParticipant2, etc.
-        if (project.hasOwnProperty(participantKey)) {
-            var participant = project[participantKey];
-
-            // Vérifier si le participant existe et n'est pas déjà dans le tableau uniqueParticipants
-            if (participant && uniqueParticipants.indexOf(participant) === -1) {
-                // Créer un élément p pour afficher le participant
-                var participantElement = document.createElement("p");
-                var participantLink = document.createElement("a");
-
-                // Séparer la valeur de nomParticipant en nom et lien
-                var participantInfo = project[participantKey].split(',');
-
-                // Utiliser la première partie comme nom du participant
-                var nomParticipant = participantInfo[0].trim();
-
-                // Créer un lien avec la deuxième partie comme href
-                participantLink.href = participantInfo[1].trim();
-
-                // Mettre le nom du participant comme contenu du lien
-                participantLink.textContent = nomParticipant;
-
-                // Ajouter le lien au paragraphe
-                participantElement.appendChild(participantLink);
-
-                // Ajouter un retour à la ligne après chaque participant
-                participantsContainer.appendChild(document.createElement("br"));
-            }
-        }
-    }
-
-    // Si le tableau uniqueParticipants est vide, afficher un message
-    if (uniqueParticipants.length < 0) {
-        var noParticipantsMessage = document.createElement("p");
-        noParticipantsMessage.textContent = "Aucun participant trouvé.";
-        participantsContainer.appendChild(noParticipantsMessage);
-    }
-}
 
 </script>
 </body>

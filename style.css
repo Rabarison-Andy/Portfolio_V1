@@ -13,6 +13,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /*--------- Scroll Bar --------- */
@@ -54,6 +55,7 @@ body {
   top: 50%;
   left: 5%;
   transform: translateY(60%);
+  text-decoration: underline #992341;
 }
 
 #welcome_landing h2 {
@@ -67,6 +69,52 @@ body {
   max-width: 25%;
 }
 
+@media only screen and (max-width: 1376px) {
+  #welcome_landing h2 {
+    top: 10%;
+    text-align: center;
+    max-width: 50%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  #welcome_landing h2 {
+    top: 10%;
+    text-align: center;
+    max-width: 65%;
+  }
+}
+
+@media only screen and (max-width: 764px) {
+  #welcome_landing h2 {
+    top: 10%;
+    text-align: center;
+    max-width: 70%;
+  }
+}
+
+@media only screen and (max-width: 608px) {
+  #welcome_landing h2 {
+    top: 10%;
+    text-align: center;
+    max-width: 85%;
+  }
+}
+
+@media only screen and (max-width: 570px) {
+  #welcome_landing h2 {
+    top: 10%;
+    text-align: center;
+    max-width: 100%;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  #welcome_landing h1 {
+    top: 100%;
+  }
+}
+
 /*--------- Infinite marquee de mes soft skills source:https://dev.to/ymvaghela07/infinite-marquee-using-just-html-and-css-2nb--------- */
 .marquee-horizontal2 {
   display: flex;
@@ -76,6 +124,9 @@ body {
   justify-content: flex-start;
   -webkit-box-align: center;
   align-items: center;
+  background-color: black;
+  color: white;
+  text-decoration: underline;
 }
 
 .track-horizontal2 {
@@ -115,22 +166,28 @@ body {
 
   /*----- A propos de moi -----*/
   #moreAboutme {
-
+    color: #2e6dcc;
     text-align: center;
     margin: 5%;
     margin-top: 20%;
     margin-bottom: 20%;
 }
 
+
+
 #aboutMe {
     font-weight: bold;
     font-size: 6rem;
     margin-bottom: 5%;
+    text-decoration: underline #ffffff;
 }
 
 #aboutMeText p {
+  font-family: 'Inter', sans-serif;
+  color: #c7c7da;
     font-size: 1.5rem;
     margin: 10px 0;
+    
 }
 
 #aboutMeText p:nth-child(even) {
@@ -165,7 +222,7 @@ body {
 /*--------- Mes projets --------- */
 
 #portfolio {
-  border: 3px solid;
+
   padding: 20px;
 }
 
@@ -175,6 +232,8 @@ body {
 }
 
 #projectFilter button {
+  font-family: 'Righteous', sans-serif;
+  font-size: 1.5rem;
   border: 2px solid #ccc;
   border-radius: 20px;
   background-color: #f5f5f5;
@@ -189,15 +248,23 @@ body {
 }
 
 #all-projects {
+  color: #ffffff;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 20px;
+  
 }
+
 
 .container {
   max-width: none;
   container-name: card-container;
   container-type: inline-size;
+  background:  rgba( 84, 45, 162, 0.25 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 13.5px );
+-webkit-backdrop-filter: blur( 13.5px );
+border-radius: 10px;
 }
 
 .card {
@@ -221,6 +288,14 @@ body {
   gap: 16px;
   justify-content: start;
   padding: 16px;
+}
+
+.content>a {
+  text-align: center;
+  border-radius: 6px;
+  background: #7d2ae8;
+  text-decoration: none;
+  color: white;
 }
 
 .background {
@@ -250,6 +325,7 @@ body {
 .card-header {
   display: flex;
   justify-content: space-between;
+  background-color: #000000a9;
 }
 
 .latest-article {
@@ -268,6 +344,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  color: #000;
+  text-decoration: underline overline;
 }
 
 .card-content>h2 {
@@ -348,7 +426,19 @@ body {
 }
 
 
+/*--------- Footer --------- */
 
+footer {
+  font-family: 'Inter', sans-serif;
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 1.5rem;
+  position: relative; /* Position relative pour décaler par rapport au contenu au-dessus */
+  margin-top: 50px; /* Espace entre le contenu au-dessus et le footer */
+  z-index: -1;
+}
 
 
 
@@ -479,4 +569,106 @@ z-index: -1;
 
 .btns.open {
 bottom: 50px;
+}
+
+
+/*--------- Page Projet --------- */
+
+#version_info {
+  position: absolute;
+  margin-right: 0;
+  margin-top: 0;
+  padding: 10px;
+  margin-bottom: 25px; /* Ajout d'un espacement en dessous */
+  top: 0; /* Position en haut */
+  left: 0; /* Position à gauche */
+}
+
+.project-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Deux colonnes */
+  gap: 2em; /* Espace entre les colonnes */
+  align-items: center;
+  background:  rgba( 84, 45, 162, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 13.5px );
+  -webkit-backdrop-filter: blur( 13.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.imgProject {
+  width: 100%;
+  max-width: 100%; /* Taille constante pour l'image */
+}
+
+.imgProject img {
+  width: 100%;
+  border-radius: 1em;
+  height: auto;
+  border: 1px solid currentColor;
+}
+
+.textProject {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+/* Les styles pour les éléments textuels restent inchangés */
+.titreProjet h2,
+.languageProjet h2,
+.descProjet h2,
+.yearProjet h2,
+.linkProjet a,
+.responsiveProjet h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center; /* Centrer le texte */
+}
+
+.titreProjet h2{
+  font-size: 8rem;
+  text-decoration: underline;
+}
+
+.projetFormation {
+  font-family: 'Righteous', sans-serif;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000; /* Ajout d'une bordure */
+  padding: 10px; /* Ajout de marge intérieure */
+}
+
+.projetFormation h2 {
+  max-width: 60%;
+  font-style: italic;
+  text-align: center; /* Centrer le texte */
+}
+
+.linkProjet a {
+  text-decoration: none;
+  margin: auto;
+  display: block;
+  background:    #351c75;
+  border-radius: 11px;
+  box-shadow:    6px 6px #444444;
+  padding:       20px 45px;
+  color:         #ffffff;
+  font:          normal bold 26px/1 "Open Sans", sans-serif;
+  text-align:    center;
+}
+
+/* Media query pour ajuster la mise en page à partir de 900px */
+@media screen and (max-width: 900px) {
+  .project-details {
+      grid-template-columns: 1fr; /* Une colonne */
+  }
+
+  .imgProject {
+      order: -1; /* Changez l'ordre de l'image pour la placer au-dessus du texte */
+  }
 }
